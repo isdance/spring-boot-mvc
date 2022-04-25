@@ -1194,6 +1194,6 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 ```
 
-Reference:
+Reference: <br />
 [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring) <br />
 [Guide to Spring Boot REST API Error Handling](https://www.toptal.com/java/spring-boot-rest-api-error-handling)
