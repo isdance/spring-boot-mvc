@@ -2,7 +2,7 @@ package com.jeremy.fundamentals.controller;
 
 import com.jeremy.fundamentals.FundamentalsApplication;
 import com.jeremy.fundamentals.dtos.UpsertUserInput;
-import com.jeremy.fundamentals.entities.Customer;
+import com.jeremy.fundamentals.dtos.UserResponse;
 import com.jeremy.fundamentals.services.UserService;
 import org.apache.logging.log4j.message.FormattedMessage;
 import org.slf4j.Logger;
@@ -30,13 +30,15 @@ public class UserController {
     @GetMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<Iterable<Customer>> getUsers() {
-        return ok().body(_userService.getUsers());
+    public ResponseEntity<Iterable<UserResponse>> getUsers() {
+        var users = _userService.getUsers();
+        return ok().body(UserResponse.fromUsers(users));
     }
 
     @PostMapping
-    public ResponseEntity<Customer> createUser(@Valid @RequestBody UpsertUserInput customer) {
-        return new ResponseEntity<Customer>(_userService.createUser(customer), HttpStatus.CREATED);
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UpsertUserInput customer) {
+        var newUser = _userService.createUser(customer);
+        return new ResponseEntity<UserResponse>(UserResponse.fromUser(newUser), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "{id}")

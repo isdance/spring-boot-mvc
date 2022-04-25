@@ -16,6 +16,12 @@ public class Customer implements Serializable {
     @Column(name="id", nullable = false)
     private Integer Id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String Name;
+
+    @Column(name = "username", nullable = false)
+    private String Username;
+
+    @Column(name = "password", nullable = false)
+    private String Password;
 }

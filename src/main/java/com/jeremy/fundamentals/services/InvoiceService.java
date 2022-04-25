@@ -22,7 +22,6 @@ public class InvoiceService implements IInvoiceService{
 
     @Override
     public Optional<Invoice> findById(String id) {
-
         return invoiceRepository.findById(id);
     }
 
