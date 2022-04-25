@@ -1197,3 +1197,20 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 Reference: <br />
 [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring) <br />
 [Guide to Spring Boot REST API Error Handling](https://www.toptal.com/java/spring-boot-rest-api-error-handling)
+
+### @Component vs @Repository and @Service in Spring
+
+- @Component is a generic stereotype for any Spring-managed component.
+  We can use @Component across the application to mark the beans as Spring's managed components. Spring will only pick up and register beans with @Component, and doesn't look for @Service and @Repository in general.
+
+@Service and @Repository are special cases of @Component. They are technically the same, but we use them for the different purposes.
+
+- @Service annotates classes at the service layer.
+  We mark beans with @Service to indicate that they're holding the business logic. Besides being used in the service layer, there isn't any other special use for this annotation.
+
+- @Repository annotates classes at the persistence layer, which will act as a database repository.
+  @Repository’s job is to catch persistence-specific exceptions and re-throw them as one of Spring’s unified unchecked exceptions.
+
+Reference: <br/>
+[@Component vs @Repository and @Service in Spring](https://www.baeldung.com/spring-component-repository-service) <br/>
+[Spring @Component Annotation](https://www.baeldung.com/spring-component-annotation#:~:text=%40Component%20is%20an%20annotation%20that,any%20specified%20dependencies%20into%20them) <br/>
